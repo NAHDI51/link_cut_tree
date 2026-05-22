@@ -1,3 +1,3 @@
-for f in input/*; do                                                                                                                                         ✔
+for f in input/*; do
   ./script.sh "$f"
 done

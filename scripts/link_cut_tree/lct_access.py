@@ -11,11 +11,11 @@ class LCTAccessScene(LCTBaseScene):
         title = self._section_title("LCT Access(v)  —  Dynamic Splay & Splice", color=GREEN)
         self.play(Write(title, run_time=0.4))
 
-        # Absolute Map Layout of a Deep 4-Tier Structured Forest
-        W = [ 0.0,  2.8, 0]
-        P = [-2.0,  1.2, 0];  R = [ 2.0,  1.2, 0]
-        V = [-3.5, -0.4, 0];  A = [-0.5, -0.4, 0]; X = [ 2.0, -0.4, 0]
-        C = [-4.5, -2.0, 0];  D = [-2.5, -2.0, 0]
+        # Absolute Map Layout shifted down by 1.2 units to clear the header
+        W = [ 0.0,  1.6, 0]
+        P = [-2.0,  0.0, 0];  R = [ 2.0,  0.0, 0]
+        V = [-3.5, -1.6, 0];  A = [-0.5, -1.6, 0]; X = [ 2.0, -1.6, 0]
+        C = [-4.5, -3.2, 0];  D = [-2.5, -3.2, 0]
 
         n_w = self._node("w", W);   n_p = self._node("p", P);   n_r = self._node("r", R)
         n_v = self._node("v", V, color=RED); n_a = self._node("a", A); n_x = self._node("x", X)
@@ -50,10 +50,10 @@ class LCTAccessScene(LCTBaseScene):
         lbl1 = self._hint("Step 1: Execute Right Rotation (Zig). v climbs above parent p.", YELLOW, title)
         self.play(ReplacementTransform(hint, lbl1), FadeOut(b_pv))
 
-        # Morph layout geometries seamlessly
+        # Adjusted rotation targets (shifted down consistently)
         new_v = P
-        new_p = [-1.0, -0.4, 0]
-        new_a = [ 0.2, -2.0, 0]
+        new_p = [-1.0, -1.6, 0]
+        new_a = [ 0.2, -3.2, 0]
 
         self.play(
             n_v.animate.move_to(new_v),
